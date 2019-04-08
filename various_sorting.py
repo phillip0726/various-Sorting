@@ -11,8 +11,6 @@ arr = []             # 생성된 난수가 저장되어있는 리스
 startTime = []
 endTime = []
 
-
-
 def checkTime(func):
     import time
     def newFunc(*args, **kwargs):
@@ -22,7 +20,6 @@ def checkTime(func):
         start = time.time()
         func(*args, **kwargs)
         end = time.time()
-        
         startTime.append(start)
         endTime.append(end)
         
@@ -48,7 +45,6 @@ def swap(x, i, j):
 def write_file(string, x):
     
     f = open(string+".txt","w")
-
     print(f"Making {string} file!")
     for i in tqdm_notebook(x):
         f.write(str(i)+"\n")
@@ -63,14 +59,12 @@ def write_file(string, x):
 @checkTime
 def bubbleSort(x):
     print("Start Bubble Sort!")
-
     for size in tqdm_notebook(reversed(range(len(x)))):
         for i in range(size):
             if x[i] > x[i+1]:
                 swap(x,i,i+1)
    
     print("Finish Bubble Sort!\n")
-    
     write_file("result_bubble",x)
     
 '''
@@ -81,7 +75,6 @@ def bubbleSort(x):
 @checkTime
 def selectionSort(x):
     print("Start Selection Sort!")
-
     for size in tqdm_notebook(reversed(range(len(x)))):
         max_i = 0
         for i in range(1, 1+size):
@@ -90,7 +83,6 @@ def selectionSort(x):
         swap(x, max_i, size)
 
     print("Finish Selection Sort!\n")
-    
     write_file("result_selection", x)
     
 '''
@@ -101,7 +93,6 @@ def selectionSort(x):
 @checkTime
 def insertionSort(x):
     print("Start Insertion Sort!")
-  
     for size in tqdm_notebook(range(1, len(x))):
         val = x[size]
         i = size
@@ -111,7 +102,6 @@ def insertionSort(x):
         x[i] = val
 
     print("Finish Insertion Sort!\n")
-
     write_file("result_insertion",x)
 
 '''
@@ -145,9 +135,7 @@ def mergeRecusive(x):
 @checkTime
 def mergeSort(x):
     print("Start Merge Sort!")
-    
     mergeRecusive(x)
-
     print("Finish Merge Sort!\n")
     write_file("result_merge",x)
 
@@ -182,11 +170,8 @@ def quickSort(x, pivotMethod=pivotFirst):
             _qsort(x, splitpoint+1, last)
 
     print("Start Quick Sort!")
-    
     _qsort(x, 0, len(x)-1)
-    
     print("Finish Quick Sort!\n")    
-
     write_file("result_quick",x)
 
 '''
@@ -198,7 +183,6 @@ def random_million():
     global arr
     
     f = open("rand_100.txt","w")
-
     arr = [i for i in range(1,rand_num+1)]
     random.shuffle(arr)
     print("Making Input file!")
@@ -210,44 +194,24 @@ def random_million():
 
 
 if __name__ == '__main__':
-
-
     #난수 파일 생성
     random_million()
 
-    
     tmp = arr[:]
     bubbleSort(tmp)
-
     print("=========================================")
-
-
     tmp = arr[:]
     selectionSort(tmp)
-    
-
     print("=========================================")
-
-
-     
     tmp = arr[:]
     insertionSort(tmp)
-
-
     print("=========================================")
-
     tmp = arr[:]
-    mergeSort(tmp)
-    
-
+    mergeSort(tmp)              
     print("=========================================")
-
-
-    
     tmp = arr[:]
     quickSort(tmp)
-
-
+    
     print("============Time Performance===========")
     print(f"Bubble Sort    : %.3f sec"%(endTime[0]-startTime[0]))
     print(f"Selection Sort : %.3f sec"%(endTime[1]-startTime[1]))
