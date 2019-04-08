@@ -25,8 +25,6 @@ def checkTime(func):
         
     return newFunc
 
-
-    
 '''
     argument    : x   -> 숫자가 저장되어 있는 리스트
                   i,j -> i,j 인덱스
@@ -138,7 +136,6 @@ def mergeSort(x):
     mergeRecusive(x)
     print("Finish Merge Sort!\n")
     write_file("result_merge",x)
-
     
 def pivotFirst(x, lmark, rmark):
     pivot_val = x[lmark]
@@ -192,7 +189,6 @@ def random_million():
     
     f.close()
 
-
 if __name__ == '__main__':
     #난수 파일 생성
     random_million()
@@ -218,3 +214,5 @@ if __name__ == '__main__':
     print(f"Insertion Sort : %.3f sec"%(endTime[2]-startTime[2]))
     print(f"Merge Sort     : %.3f sec"%(endTime[3]-startTime[3]))    
     print(f"Quick Sort     : %.3f sec"%(endTime[4]-startTime[4]))    
+
+    
